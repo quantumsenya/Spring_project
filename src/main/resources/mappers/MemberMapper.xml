@@ -4,8 +4,8 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jafa.repository.MemberRepository">
 	<insert id="save">
-		insert into member_sec01(mno, memberId, password, email)
-		values(member_sec01_seq.nextval,#{memberId}, #{password}, #{email})
+		insert into proj_mem(mno, memberId, password, email)
+		values(proj_mem_seq.nextval,#{memberId}, #{password}, #{email})
 	</insert>
 	
 	<resultMap type="com.jafa.domain.MemberVO" id="memberMap">
@@ -22,14 +22,14 @@
 	</resultMap>
 	
 	<select id="read" resultMap="memberMap">
-		SELECT * FROM member_sec01 WHERE memberId = #{memberId}
+		SELECT * FROM proj_mem WHERE memberId = #{memberId}
 	</select>
 	
 	<select id="getAuthList" resultType="com.jafa.domain.AuthVO">
-		select * from member_auth where memberId=#{memberId} order by ordinal
+		select * from pmember_auth where memberId=#{memberId} order by ordinal
 	</select>
 	
 	<select id="memberList" resultMap="memberMap">
-		SELECT * FROM member_sec01
+		SELECT * FROM proj_mem
 	</select>
 </mapper>
